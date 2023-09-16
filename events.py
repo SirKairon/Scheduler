@@ -1,3 +1,9 @@
+from ics import Calendar, Event as iCalEvent
+from datetime import datetime, timedelta
+
+
+
+
 class Event:
     def __init__(self, name, start_time=-1, end_time=-1, day=-1):
         self.name = name
@@ -60,6 +66,25 @@ class Timetable:
                     string += f"  {hour:02d}:00 - {hour + 1:02d}:00: {', '.join(event_strings)}\n"
 
         return string
+    
+    def to_ics(self):
+        cal = Calendar()
+
+        for day_index, day in enumerate(range(7)):
+            for hour in range(24):
+                events = self.get_events(day_index, hour)
+                for event in events:
+                    start_time = datetime(2023, 1, day_index + 2, hour)  # Assuming January 2, 2023 is a Monday
+                    end_time = start_time + timedelta(hours=1)
+
+                    ics_event = iCalEvent()
+                    ics_event.name = event.get_name()
+                    ics_event.begin = start_time
+                    ics_event.end = end_time
+
+                    cal.events.add(ics_event)
+
+        return cal
 
 # Example usage:
 event1 = Event("Meeting", start_time=9, end_time=11, day=0)
@@ -68,4 +93,12 @@ event2 = Event("Lunch", start_time=12, end_time=13, day=1)
 events = [event1, event2]
 
 timetable = Timetable(events)
-print(timetable)
+ical_data = timetable.to_ics()
+print(ical_data)
+with open("timetable.ics", "w") as ics_file:
+    ics_file.writelines(ical_data)
+
+
+
+
+
