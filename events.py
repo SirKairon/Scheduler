@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 
 
-class Event:
+class event:
     def __init__(self, name, start_time=-1, end_time=-1, day=-1):
         self.name = name
         self.start_time = start_time
@@ -37,11 +37,8 @@ class Event:
 
 
 class Timetable:
-    def __init__(self, events):
-        self.events = events
+    def __init__(self):
         self.timetable = [[[] for _ in range(24)] for _ in range(7)]
-        for event in events:
-            self.add_event(event)
 
     def add_event(self, event):
         if 0 <= event.day < 7 and 0 <= event.start_time <= event.end_time < 24:
@@ -49,6 +46,9 @@ class Timetable:
                 self.timetable[event.day][i].append(event)
         else:
             print("Invalid event: ", event)
+    def add_events(self, events):
+        for event in events:
+            self.add_event(event)
 
     def get_events(self, day, time):
         return self.timetable[day][time]
