@@ -1,0 +1,28 @@
+:root{
+    --bg-color: #1c1a26;
+
+    --color-main: #d0bcff;
+    --color-main-2: #cdc2dc;
+    --color-main-3: #efb8c9;
+    --color-main-4: #f3b8b5;
+
+    --color-black: rgba(0,0,0,0);
+    --color-white: rgba(255,255,255,255);
+}
+
+html{
+    box-sizing: inherit;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+
+
+  
