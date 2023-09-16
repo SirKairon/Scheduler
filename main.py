@@ -2,9 +2,10 @@
 import events.py as Events
 #inputing the primary tasks
 pt = str(input("Do you have an exsisting schedule (y/n)"))
-# primary tasks (name day start and end time)
-# secondary tasks ( type ( daily or weekly or by x day))
+
+
 Timetable = Events.Timetable()
+# primary tasks (name day start and end time)
 if  pt == "y":
     print('upload your schedule')
 else:
@@ -24,19 +25,30 @@ else:
             if condition == 'n':
                 condition = False
 
-
+# secondary tasks ( type ( daily or weekly or by x day))
 pt3 = str(input('Do you have any secondary tasks?(y/n)'))
 if pt3 == 'y':
     condition = True
     while condition == True:
         name = str(input('What is the name of the task?'))
-        type = str(input('Is the task daily, weekly or by x day?'))
+        type = str(input('Is the task "daily", "weekly" or "by x day"?'))
         if type == 'daily':
-            Events.event(name, start_time, end_time, day)
+            num = int(input('How many hours a day do you want to spend on this task?'))
+            for i in range(7):
+                day = i
+                event = Events.event(name, day = day)
+                Events.random_assigner(event, num)
         elif type == 'weekly':
-            Events.event(name, start_time, end_time, day)
+            num = int(input('How many hours a day do you want to spend on this task?'))
+            day = str(input('What day do you want to do this task on?'))
+            day = days[day]
+            event = Events.event(name, day = day)
+            Events.random_assigner(event, num)
         elif type == 'by x day':
-            Events.event(name, start_time, end_time, day)
+            num = int(input('How many hours a day do you want to spend on this task?'))
+            day = str(input('What day do you want to do this task on?'))
+            day = days[day]
+            Events.random_assigner(name, num, day)
         else:
             print('invalid input')
         condition = str(input('Do you have any more secondary tasks?(y/n)'))
