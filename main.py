@@ -25,5 +25,21 @@ else:
                 condition = False
 
 
-
+pt3 = str(input('Do you have any secondary tasks?(y/n)'))
+if pt3 == 'y':
+    condition = True
+    while condition == True:
+        name = str(input('What is the name of the task?'))
+        type = str(input('Is the task daily, weekly or by x day?'))
+        if type == 'daily':
+            Events.event(name, start_time, end_time, day)
+        elif type == 'weekly':
+            Events.event(name, start_time, end_time, day)
+        elif type == 'by x day':
+            Events.event(name, start_time, end_time, day)
+        else:
+            print('invalid input')
+        condition = str(input('Do you have any more secondary tasks?(y/n)'))
+        if condition == 'n':
+            condition = False
     
