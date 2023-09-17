@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+// import * as fs from 'fs';
 
 var dict = {"userName": "Guest", "primaryTasks": {}, "secondaryTasks": {}};
 var checkFile = document.querySelectorAll('input[name="check"]');
@@ -230,19 +230,20 @@ submit_btn.addEventListener("submit", function(event){
 })
 
 function generateSchedule() {
-    const jsonString = JSON.stringify(dict, null, 2);
+    // const jsonString = JSON.stringify(dict, null, 2);
 
-    // Specify the file path where you want to save the JSON file
-    const filePath = 'data.json';
+    // // Specify the file path where you want to save the JSON file
+    // const filePath = 'data.json';
 
-    // Write the JSON data to the file
-    fs.writeFile(filePath, jsonString, (err) => {
-        if (err) {
-            console.error('Error writing JSON file:', err);
-        } else {
-            console.log('JSON file has been saved.');
-        }
-    });
+    // // Write the JSON data to the file
+    // fs.writeFile(filePath, jsonString, (err) => {
+    //     if (err) {
+    //         console.error('Error writing JSON file:', err);
+    //     } else {
+    //         console.log('JSON file has been saved.');
+    //     }
+    // });
+    console.log(dict);
 }
    
 // Add a click event listener to the download button
