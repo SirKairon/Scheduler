@@ -1,10 +1,11 @@
-from ics import Calendar, Event as iCalEvent
+#from ics import Calendar, Event as iCalEvent
 from datetime import datetime, timedelta
+import random
 
 
 
 
-class event:
+class Event:
     def __init__(self, name, start_time=-1, end_time=-1, day=-1):
         self.name = name
         self.start_time = start_time
@@ -39,7 +40,33 @@ class event:
 class Timetable:
     def __init__(self):
         self.timetable = [[[] for _ in range(24)] for _ in range(7)]
+    def random_assign(self, secondary_event,hours):
+        day = secondary_event.get_day()
+        if day==-1:
+            day = random.randint(0, 6)
+        start_time = random.randint(0, 24-hours)
+        end_time = start_time + hours
+        secondary_event.set_day(day)
+        secondary_event.set_start_time(start_time)
+        secondary_event.set_end_time(end_time)
+        while True:
+            if self.check_availability(secondary_event):
+                break
+            else:
+                day = random.randint(0, 6)
+                start_time = random.randint(0, 24-hours)
+                end_time = start_time + hours
+                secondary_event.set_day(day)
+                secondary_event.set_start_time(start_time)
+                secondary_event.set_end_time(end_time)
+        self.add_event(secondary_event)
 
+    def check_availability(self, event):
+        for i in range(event.start_time, event.end_time):
+            if self.timetable[event.day][i]:
+                return False
+        return True
+    
     def add_event(self, event):
         if 0 <= event.day < 7 and 0 <= event.start_time <= event.end_time < 24:
             for i in range(event.start_time, event.end_time):
@@ -67,38 +94,36 @@ class Timetable:
 
         return string
     
-    def to_ics(self):
-        cal = Calendar()
+    # def to_ics(self):
+    #     cal = Calendar()
 
-        for day_index, day in enumerate(range(7)):
-            for hour in range(24):
-                events = self.get_events(day_index, hour)
-                for event in events:
-                    start_time = datetime(2023, 1, day_index + 2, hour)  # Assuming January 2, 2023 is a Monday
-                    end_time = start_time + timedelta(hours=1)
+    #     for day_index, day in enumerate(range(7)):
+    #         for hour in range(24):
+    #             events = self.get_events(day_index, hour)
+    #             for event in events:
+    #                 start_time = datetime(2023, 1, day_index + 2, hour)  # Assuming January 2, 2023 is a Monday
+    #                 end_time = start_time + timedelta(hours=1)
 
-                    ics_event = iCalEvent()
-                    ics_event.name = event.get_name()
-                    ics_event.begin = start_time
-                    ics_event.end = end_time
+    #                 ics_event = iCalEvent()
+    #                 ics_event.name = event.get_name()
+    #                 ics_event.begin = start_time
+    #                 ics_event.end = end_time
 
-                    cal.events.add(ics_event)
+    #                 cal.events.add(ics_event)
 
-        return cal
+    #     return cal
 
 # Example usage:
-event1 = Event("Meeting", start_time=9, end_time=11, day=0)
-event2 = Event("Lunch", start_time=12, end_time=13, day=1)
+# event1 = Event("Meeting", start_time=9, end_time=11, day=0)
+# event2 = Event("Lunch", start_time=12, end_time=13, day=1)
 
-events = [event1, event2]
+# events = [event1, event2]
 
-timetable = Timetable(events)
-ical_data = timetable.to_ics()
-print(ical_data)
-with open("timetable.ics", "w") as ics_file:
-    ics_file.writelines(ical_data)
+# timetable = Timetable()
+# timetable.add_events(events)
+# print(timetable)
 
-
-
-
-
+# ical_data = timetable.to_ics()
+# print(ical_data)
+# with open("timetable.ics", "w") as ics_file:
+#     ics_file.writelines(ical_data)
