@@ -4,23 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+
 </head>
-<body>
-    <div class="navigation">
-        <a href="#">Home</a>
-        <a href="about.html">About</a>
-    </div>
-
-    <div id="main">
-        <h1 class="main__title">Scheduler</h1>
-        <p class="main__subtitle"> Create a schedule easily ... </p>
-        <!-- <p class="main__subtitle-1"> Click Generate to get started </p> -->
+<body class="bg-color">
+    <header>
+        <a href="#" class="logo">Hackers</a>
+        <ul>
+            <li><a href="#" class = "active" > Home </a></li>
+            <li><a href="#sec">About Us</a></li>
+        </ul>
+    </header>
+    <section class="main_page">
+        <img src="{{ url_for('static', filename='src/stars.png') }}" id="main_page_stars">
+        <img src="{{ url_for('static', filename='src/moon.png') }}" id="main_page_moon">
+        <img src="{{ url_for('static', filename='src/mountains_behind.png') }}" id="main_page_mountains_behind">
+        <h2 id="main_page_text"> Scheduler </h2>
         <form action="schedule.html" method="GET">
-            <button type="submit" class="btn">Start</button>
+            <button type="submit" id="main_page_btn">Start</button>
         </form>
-    </div>
+        <img src="{{ url_for('static', filename='src/mountains_front.png') }}" id="main_page_mountains_front">
+    </section>
 
-    <script src="script.js"></script>
+    <div class="sec" id = "sec">
+        <h2 class="heading">About us</h2>
+        <p> In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows.
+
+            The scheduling activity is carried out by a process called scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.
+            
+            Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single central processing unit (CPU).In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows.
+
+            The scheduling activity is carried out by a process called scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.
+            
+            Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single central processing unit (CPU).In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows.
+
+            The scheduling activity is carried out by a process called scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.
+            
+            Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single central processing unit (CPU).</p>
+    </div>
+    <script>
+        let stars = document.getElementById('main_page_stars');
+        let moon = document.getElementById('main_page_moon');
+        let mountains_behind = document.getElementById('main_page_mountains_behind');
+        let text = document.getElementById('main_page_text');
+        let btn = document.getElementById('main_page_btn');
+        let mountains_front = document.getElementById('main_page_mountains_front');
+        let header = document.querySelector('header');
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            stars.style.left = value *2 + 'px';
+            moon.style.top = value *1 + 'px';
+            mountains_behind.style.top = value *0.1+ 'px';
+        })  
+    </script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 </html>

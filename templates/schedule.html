@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
     <title>Document</title>
 </head>
 <body>
     <div id="main">
-        <div id="form">
+        <!-- Success -->
+        <div id="form" class=".flex-page">
             <p class="main__subtitle">Enter your name for a personalized experience?</p>
             <form id="nameForm" action="#hello">
                 <input type="text" id="name" name="name" class="form__input" placeholder="John Doe"><br>
-    
                 <label for="name"></label>
                 <button type="submit" class="btn">Submit</button>
             </form>
         </div>
         
+        <!-- Success -->
         <div id="hello" class="main__title">
             <p></p>
         </div>
     
         <div id="schedule">
             <p class="main__subtitle"> Do you have an existing schedule </span>
-            <form class="radioForm">
+            <form class="radioForm" action="/change" id="change" method=POST>
                 <input type="radio" id="round-btn" value="yes" name="check">
                    <label for="yes">Yes</label>
-                <input type="radio" id="round-btn" value="no" name="check">
+                <input type="radio" id="round-btn" value="no" name="check" checked>
                    <label for="no">No</label><br>
-                   <div id="container">
+            </form>
+            <form action="/success" method="post" enctype="multipart/form-data" id="schedule_submit">
+                <div id="container">
                     <div class="card">
-                      <h3>Upload Files</h3>
-                      <div class="drop_box">
-                        <header>
-                          <h4>Select File here</h4>
-                        </header>
-                        <p>Files Supported: .ics</p>
-                        <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
-                        <button class="file-btn">Choose File</button>
-                      </div>
+                        <h3>Upload Files</h3>
+                        <div class="drop_box">
+                            <h4>Select File here</h4>
+                            <p>Files Supported: .ics</p>
+                            <input type="file" name="file" />
+                            <input type="submit" value="Upload" class="file-btn">
+                        </div>
                     </div>
-                   </div>
-
-                <button type="submit" class="btn">Submit</button>      
+                </div>
+                <button type="submit" class="btn">Submit</button>
             </form>
         </div> 
 
@@ -67,59 +67,59 @@
                 <label for="start-time">Start Time</label>
                 <select id="p-start-time" name="start-time">
                     <option value="choose_start_time">Choose Start Time</option>
-                    <option value="12:00am">12:00am</option>
-                    <option value="1:00am">1:00am</option>
-                    <option value="2:00am">2:00am</option>
-                    <option value="3:00am">3:00am</option>
-                    <option value="4:00am">4:00am</option>
-                    <option value="5:00am">5:00am</option>
-                    <option value="6:00am">6:00am</option>
-                    <option value="7:00am">7:00am</option>
-                    <option value="8:00am">8:00am</option>
-                    <option value="9:00am">9:00am</option>
-                    <option value="10:00am">10:00am</option>
-                    <option value="11:00am">11:00am</option>
-                    <option value="12:00pm">12:00pm</option>
-                    <option value="1:00pm">1:00pm</option>
-                    <option value="2:00pm">2:00pm</option>
-                    <option value="3:00pm">3:00pm</option>
-                    <option value="4:00pm">4:00pm</option>
-                    <option value="5:00pm">5:00pm</option>
-                    <option value="6:00pm">6:00pm</option>
-                    <option value="7:00pm">7:00pm</option>
-                    <option value="8:00pm">8:00pm</option>
-                    <option value="9:00pm">9:00pm</option>
-                    <option value="10:00pm">10:00pm</option>
-                    <option value="11:00pm">11:00pm</option>
+                    <option value=0>12:00am</option>
+                    <option value=1>1:00am</option>
+                    <option value=2>2:00am</option>
+                    <option value=3>3:00am</option>
+                    <option value=4>4:00am</option>
+                    <option value=5>5:00am</option>
+                    <option value=6>6:00am</option>
+                    <option value=7>7:00am</option>
+                    <option value=8>8:00am</option>
+                    <option value=9>9:00am</option>
+                    <option value=10>10:00am</option>
+                    <option value=11>11:00am</option>
+                    <option value=12>12:00pm</option>
+                    <option value=13>1:00pm</option>
+                    <option value=14>2:00pm</option>
+                    <option value=15>3:00pm</option>
+                    <option value=16>4:00pm</option>
+                    <option value=17>5:00pm</option>
+                    <option value=18>6:00pm</option>
+                    <option value=19>7:00pm</option>
+                    <option value=20>8:00pm</option>
+                    <option value=21>9:00pm</option>
+                    <option value=22>10:00pm</option>
+                    <option value=23>11:00pm</option>
                 </select>
 
                 <label for="end-time">End Time</label>
                 <select id="p-end-time" name="end-time">
                     <option value="choose_end_time">Choose End Time</option>
-                    <option value="12:00am">12:00am</option>
-                    <option value="1:00am">1:00am</option>
-                    <option value="2:00am">2:00am</option>
-                    <option value="3:00am">3:00am</option>
-                    <option value="4:00am">4:00am</option>
-                    <option value="5:00am">5:00am</option>
-                    <option value="6:00am">6:00am</option>
-                    <option value="7:00am">7:00am</option>
-                    <option value="8:00am">8:00am</option>
-                    <option value="9:00am">9:00am</option>
-                    <option value="10:00am">10:00am</option>
-                    <option value="11:00am">11:00am</option>
-                    <option value="12:00pm">12:00pm</option>
-                    <option value="1:00pm">1:00pm</option>
-                    <option value="2:00pm">2:00pm</option>
-                    <option value="3:00pm">3:00pm</option>
-                    <option value="4:00pm">4:00pm</option>
-                    <option value="5:00pm">5:00pm</option>
-                    <option value="6:00pm">6:00pm</option>
-                    <option value="7:00pm">7:00pm</option>
-                    <option value="8:00pm">8:00pm</option>
-                    <option value="9:00pm">9:00pm</option>
-                    <option value="10:00pm">10:00pm</option>
-                    <option value="11:00pm">11:00pm</option>
+                    <option value=0>12:00am</option>
+                    <option value=1>1:00am</option>
+                    <option value=2>2:00am</option>
+                    <option value=3>3:00am</option>
+                    <option value=4>4:00am</option>
+                    <option value=5>5:00am</option>
+                    <option value=6>6:00am</option>
+                    <option value=7>7:00am</option>
+                    <option value=8>8:00am</option>
+                    <option value=9>9:00am</option>
+                    <option value=10>10:00am</option>
+                    <option value=11>11:00am</option>
+                    <option value=12>12:00pm</option>
+                    <option value=13>1:00pm</option>
+                    <option value=14>2:00pm</option>
+                    <option value=15>3:00pm</option>
+                    <option value=16>4:00pm</option>
+                    <option value=17>5:00pm</option>
+                    <option value=18>6:00pm</option>
+                    <option value=19>7:00pm</option>
+                    <option value=20>8:00pm</option>
+                    <option value=21>9:00pm</option>
+                    <option value=22>10:00pm</option>
+                    <option value=23>11:00pm</option>
                 </select><br>
 
                 <label for="text">Description / Notes </label>
@@ -175,47 +175,47 @@
                 <select id="s-time" name="time">
                     <option value="choose_time">Choose Time</option>
                     <option value="Any Time">Any Time</option>
-                    <option value="12:00am">12:00am</option>
-                    <option value="1:00am">1:00am</option>
-                    <option value="2:00am">2:00am</option>
-                    <option value="3:00am">3:00am</option>
-                    <option value="4:00am">4:00am</option>
-                    <option value="5:00am">5:00am</option>
-                    <option value="6:00am">6:00am</option>
-                    <option value="7:00am">7:00am</option>
-                    <option value="8:00am">8:00am</option>
-                    <option value="9:00am">9:00am</option>
-                    <option value="10:00am">10:00am</option>
-                    <option value="11:00am">11:00am</option>
-                    <option value="12:00pm">12:00pm</option>
-                    <option value="1:00pm">1:00pm</option>
-                    <option value="2:00pm">2:00pm</option>
-                    <option value="3:00pm">3:00pm</option>
-                    <option value="4:00pm">4:00pm</option>
-                    <option value="5:00pm">5:00pm</option>
-                    <option value="6:00pm">6:00pm</option>
-                    <option value="7:00pm">7:00pm</option>
-                    <option value="8:00pm">8:00pm</option>
-                    <option value="9:00pm">9:00pm</option>
-                    <option value="10:00pm">10:00pm</option>
-                    <option value="11:00pm">11:00pm</option>
+                    <option value=0>12:00am</option>
+                    <option value=1>1:00am</option>
+                    <option value=2>2:00am</option>
+                    <option value=3>3:00am</option>
+                    <option value=4>4:00am</option>
+                    <option value=5>5:00am</option>
+                    <option value=6>6:00am</option>
+                    <option value=7>7:00am</option>
+                    <option value=8>8:00am</option>
+                    <option value=9>9:00am</option>
+                    <option value=10>10:00am</option>
+                    <option value=11>11:00am</option>
+                    <option value=12>12:00pm</option>
+                    <option value=13>1:00pm</option>
+                    <option value=14>2:00pm</option>
+                    <option value=15>3:00pm</option>
+                    <option value=16>4:00pm</option>
+                    <option value=17>5:00pm</option>
+                    <option value=18>6:00pm</option>
+                    <option value=19>7:00pm</option>
+                    <option value=20>8:00pm</option>
+                    <option value=21>9:00pm</option>
+                    <option value=22>10:00pm</option>
+                    <option value=23>11:00pm</option>
                 </select><br>
 
                 <label for="hours">How many hours do you think you will take to complete the task?</label>
                 <select id="s-hours" name="hours">
                     <option value="select_hours">Select Hours</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                    <option value=11>11</option>
+                    <option value=12>12</option>
                 </select><br>
 
                 <label for="text">Description / Notes </label>
@@ -229,11 +229,14 @@
                 <div id="s-tasks"></div>
             </section>
 
-            <form id="s-next">
+            <form id="s-next" action="/generate">
+                <div id="test" script="display: none" name="inputCode"></div>
                 <button type="submit" class="btn">Generate Schedule</button>
             </form>
+            <p id="output"></p>
         </div>
     </div>
-    <script src="script.js" type="module"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+
 </body>
 </html>
