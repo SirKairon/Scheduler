@@ -1,9 +1,45 @@
 #from ics import Calendar, Event as iCalEvent
 from datetime import datetime, timedelta
 import random
+import json
+import datetime  
+from datetime import date 
+from datetime import datetime, timedelta, timezone
+import icalendar
+from dateutil.rrule import *
+
+def jsonfileinput(timetable ):
+    file = "timetable.json" 
+    with open(file, "w") as outfile:
+        for day in timetable:
+            json_object = json.dump(day,outfile)
+    return file
 
 
 
+def extrat_file():
+    icalfile = open('sample.ics', 'rb')
+    gcal = icalendar.Calendar.from_ical(icalfile.read())
+    for component in gcal.walk():
+        if component.name == "VEVENT":
+            summary = component.get('summary')
+            startdt = component.get('dtstart').dt
+            enddt = component.get('dtend').dt
+        startdt = startdt.strftime("%D %H:%M UTC")
+        enddt = enddt.strftime("%D %H:%M UTC")
+        
+
+        start = startdt.split(" " )
+        start_date =start[0].split("/")
+        start_day_name = datetime.date(int(start_date[2]), int(start_date[1]), int(start_date[0]))
+        start_time = start[1].split(":")
+        start_time = start_time[0]
+        end = enddt.split(" ")
+        end_date = end[0].split("/")
+        start_day_name = datetime.date(int(end_date[2]), int(end_date[1]), int(end_date[0]))
+        end_time = end[1].split(":")
+        if end_time[1] != "00":
+            end_time = str(int(end_time[0])+1)        
 
 class Event:
     def __init__(self, name, start_time=-1, end_time=-1, day=-1):
