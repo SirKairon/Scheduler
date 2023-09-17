@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="main">
-        <div id="form">
+        <!-- <div id="form">
             <p class="main__subtitle">Enter your name for a personalized experience?</p>
             <form id="nameForm" action="#hello">
                 <input type="text" id="name" name="name" class="form__input" placeholder="John Doe"><br>
@@ -24,9 +24,124 @@
     
         <div id="schedule">
             <p class="main__subtitle"> Do you have an existing schedule </span>
-            <form>
-                <label>
+            <form class="radioForm">
+                <input type="radio" id="round-btn" value="yes" name="check">
+                   <label for="yes">Yes</label>
+                <input type="radio" id="round-btn" value="no" name="check">
+                   <label for="no">No</label><br>
+                   <div id="container">
+                    <div class="card">
+                      <h3>Upload Files</h3>
+                      <div class="drop_box">
+                        <header>
+                          <h4>Select File here</h4>
+                        </header>
+                        <p>Files Supported: .ics</p>
+                        <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
+                        <button class="file-btn">Choose File</button>
+                      </div>
+                    </div>
+                   </div>
+
+                <button type="submit" class="btn">Submit</button>      
             </form>
+        </div> -->
+
+        <div id="primaryTask">
+            <h1 class="main__subtitle"> Primary Tasks </h1>
+            <form id="new-task-form">
+                <label for="text">What is your Primary Task? </label>
+                <input type="text" name="name" id="task-input" placeholder="Sleep "><br>
+                <label for="day">Choose a day:</label>
+                <select id="day" name="day">
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select><br>
+
+                <label for="start-time">Start Time</label>
+                <select id="start-time" name="start-time">
+                    <option value="0000">12:00am</option>
+                    <option value="1000">1:00am</option>
+                    <option value="2000">2:00am</option>
+                    <option value="3000">3:00am</option>
+                    <option value="4000">4:00am</option>
+                    <option value="5000">5:00am</option>
+                    <option value="6000">6:00am</option>
+                    <option value="7000">7:00am</option>
+                    <option value="8000">8:00am</option>
+                    <option value="9000">9:00am</option>
+                    <option value="1000">10:00am</option>
+                    <option value="1100">11:00am</option>
+                    <option value="1200">12:00pm</option>
+                    <option value="1300">1:00pm</option>
+                    <option value="1400">2:00pm</option>
+                    <option value="1500">3:00pm</option>
+                    <option value="1600">4:00pm</option>
+                    <option value="1700">5:00pm</option>
+                    <option value="1800">6:00pm</option>
+                    <option value="1900">7:00pm</option>
+                    <option value="2000">8:00pm</option>
+                    <option value="2100">9:00pm</option>
+                    <option value="2200">10:00pm</option>
+                    <option value="2300">11:00pm</option>
+                </select>
+
+                <label for="end-time">End Time</label>
+                <select id="end-time" name="end-time">
+                    <option value="0000">12:00am</option>
+                    <option value="1000">1:00am</option>
+                    <option value="2000">2:00am</option>
+                    <option value="3000">3:00am</option>
+                    <option value="4000">4:00am</option>
+                    <option value="5000">5:00am</option>
+                    <option value="6000">6:00am</option>
+                    <option value="7000">7:00am</option>
+                    <option value="8000">8:00am</option>
+                    <option value="9000">9:00am</option>
+                    <option value="1000">10:00am</option>
+                    <option value="1100">11:00am</option>
+                    <option value="1200">12:00pm</option>
+                    <option value="1300">1:00pm</option>
+                    <option value="1400">2:00pm</option>
+                    <option value="1500">3:00pm</option>
+                    <option value="1600">4:00pm</option>
+                    <option value="1700">5:00pm</option>
+                    <option value="1800">6:00pm</option>
+                    <option value="1900">7:00pm</option>
+                    <option value="2000">8:00pm</option>
+                    <option value="2100">9:00pm</option>
+                    <option value="2200">10:00pm</option>
+                    <option value="2300">11:00pm</option>
+                </select><br>
+
+                <label for="text">Description / Notes </label>
+                <input type="text" name="notes" id="task-desc" placeholder="To sleep peacefully ... ">
+
+                <input type="submit" class="btn" value="Add Task"></button>
+            </form>
+            
+            <section class="task-list">
+                <h2 class="main__subtitle">Tasks List</h2>
+                <div id="tasks">
+                    <div class="task">
+                        <div class="content">
+                            <div class="task-card">
+                                <input type="text" class="task-card-1 text" value="My task" readonly>
+                                <input type="text" class="task-card-1 time" value="start-time - end-time" readonly>
+                                <input type="text" class="task-card-1 desc" value="Description" readonly>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button class="btn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
     <script src="script.js"></script>
