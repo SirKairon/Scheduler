@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
 </head>
 
 <body class="text-center text-bg-dark justify-content-center">
@@ -15,6 +15,7 @@
     </div>
     <div class="container" id="h1">
         <h1>Result</h1>
+        <h2>{{flaskName}}</h2>
     </div>
     <div class="table" id="table">
         <table class="table" border="5" cellapcing="0" align="center" id="tableID">
@@ -266,6 +267,16 @@
                     <td draggable="true" ondragstart="drag(event)" align="center" height="50"></td>
                     <td draggable="true" ondragstart="drag(event)" align="center" height="50"></td>
                 </tr>
+                {% for row in data %}
+                <tr>
+                    <td align="center" height="50">
+                        <b>{{ row[0] }}</b>
+                    </td>
+                    {% for cell in row[1:] %}
+                    <td align="center" height="50">{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
 
             </tbody>
 
@@ -326,6 +337,7 @@
             col.addEventListener('drop', handleDrop, false);
         });
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

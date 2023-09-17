@@ -102,10 +102,13 @@ document.getElementById("schedule").addEventListener("submit", function(event) {
         task_el.appendChild(task_content_el);
         task_content_el.appendChild(task_card);
 
+        var s_time = document.querySelector(`option[value="${input_start_time.value}"]`).textContent;
+        var e_time = document.querySelector(`option[value="${input_end_time.value}"]`).textContent;
+
         task_card.innerHTML = `
         <input type="text" class="task-card-1 text" value="${input_text.value}" readonly>
         <input type="text" class="task-card-1 day" value="${input_day.value}" readonly>
-        <input type="text" class="task-card-1 time" value="${input_start_time.value} - ${input_end_time.value}" readonly>
+        <input type="text" class="task-card-1 time" value="${s_time} - ${e_time}" readonly>
         <input type="text" class="task-card-1 desc" value="${input_task_desc.value}" readonly>`;
 
         const task_actions_el = document.createElement("div");
@@ -192,9 +195,11 @@ submit_btn.addEventListener("submit", function(event){
         task_el.appendChild(task_content_el);
         task_content_el.appendChild(task_card);
 
+        var time = document.querySelector(`option[value="${input_time.value}"]`).textContent;
+
         task_card.innerHTML = `
         <input type="text" class="task-card-1 text" value="${input_text.value}" readonly>
-        <input type="text" class="task-card-1 day-time" value="Due by ${input_day.value} day, ${input_time.value}" readonly>
+        <input type="text" class="task-card-1 day-time" value="Due by ${input_day.value}, ${input_time.value}" readonly>
         <input type="text" class="task-card-1 hours" value="Allocated ${input_hours.value} to complete the task" readonly>
         <input type="text" class="task-card-1 desc" value="${input_task_desc.value}" readonly>`;
 
