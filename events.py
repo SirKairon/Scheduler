@@ -41,7 +41,9 @@ class Timetable:
     def __init__(self):
         self.timetable = [[[] for _ in range(24)] for _ in range(7)]
     def random_assign(self, secondary_event,hours):
-        day = random.randint(0, 6)
+        day = secondary_event.get_day()
+        if day==-1:
+            day = random.randint(0, 6)
         start_time = random.randint(0, 24-hours)
         end_time = start_time + hours
         secondary_event.set_day(day)
@@ -112,21 +114,16 @@ class Timetable:
     #     return cal
 
 # Example usage:
-event1 = Event("Meeting", start_time=9, end_time=11, day=0)
-event2 = Event("Lunch", start_time=12, end_time=13, day=1)
+# event1 = Event("Meeting", start_time=9, end_time=11, day=0)
+# event2 = Event("Lunch", start_time=12, end_time=13, day=1)
 
-events = [event1, event2]
+# events = [event1, event2]
 
-timetable = Timetable()
-timetable.add_events(events)
-print(timetable)
+# timetable = Timetable()
+# timetable.add_events(events)
+# print(timetable)
 
 # ical_data = timetable.to_ics()
 # print(ical_data)
 # with open("timetable.ics", "w") as ics_file:
 #     ics_file.writelines(ical_data)
-
-
-
-
-
