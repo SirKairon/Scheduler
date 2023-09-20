@@ -4,7 +4,7 @@ Not sure how to find the time to do a task and make a schedule? Let us help!
 
 ## Description
 
-What2Eat is a web application made using Flask. It is a dynamic and responsive schedule-maker that has a nested, priority-based algorithm for tasks which the user considers primary or fixed in their schedule, and secondary tasks which they want to complete but don't know when. 
+Scheduler is a web application made using Flask. It is a dynamic and responsive schedule-maker that has a nested, priority-based algorithm for tasks which the user considers primary or fixed in their schedule, and secondary tasks which they want to complete but don't know when. 
 
 ## Technical Description
 
