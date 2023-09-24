@@ -3,113 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <style>
-        /* To format paragraphs*/
-        p{
-            font-size: 20px; /* Adjust the font size */
-            line-height: 1.5; /* Control the line spacing (1.5 means 1.5 times the font size) */
-            margin-bottom: 20px; /* Add space between paragraphs */
-            max-width: 1000px; /* Set a maximum width for paragraphs */
-        }
-        /* CSS styles for member info */
-        .member-container {
-            display: flex; /* Use flexbox for layout */
-            align-items: center; /* Center vertically */
-            margin-bottom: 20px; /* Add space between members */
-        }
-        .member-image {
-            width: 150px; /* Adjust the image width as needed */
-            height: 150px;
-            margin-right: 20px; /* Add space between image and text */
-        }
-        .member-info {
-            font-size: 16px;
-            margin-left: 20px;
-        }
-        /* Background color and text color for the body */
-        body {
-            background-color: #1c1a26 ; /* Change this to your desired background color */
-            color: #d0bcff; /* Change this to your desired text color */
-        }
-        /* Heading styles */
-        h1 {
-            color: #cdc2dc; /* Change this to your desired color for h1 headings */
-        }
-        h2, h3 {
-            color: #efb8c9; /* Change this to your desired color for h2 and h3 headings */
-        }
-        .two-column {
-            display: flex;
-            flex-direction: row;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/about.css')}}">
 
-        .column {
-            flex: 1;
-        }
-
-        h1, h2 ,h3 {margin-bottom: 20px; /* Adjust the value to control the spacing */
-            color: var(--color-main-3); }
-    </style>
-    
+    <title>About the team</title>
 </head>
+
 <body>
-    <h1>ABOUT US</h1>
-    <p>Welcome to our team's "About Us" page! We are a group of enthusiastic students from the University of Alberta, all pursuing our passion for computer science. Currently in our second year at the university, we are on an exciting journey of learning and discovery in the world of technology. Our diverse backgrounds, shared love for coding, and dedication to innovation bring a unique blend of skills and creativity to the table. Get to know each member of our dynamic team as we embark on various projects and challenges, striving to make a difference in the ever-evolving field of computer science.</p>
+    <header>
+        <a href="#"><img src="{{ url_for('static', filename='src/logo.png')}}" class="logo"></a>
+        <div class="nav-options">
+            <a href="/" class = "active" > Home </a>
+            <a href="about.html">About Us</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="icon">
+            <div class="imgBx" style="--i:1;" data-id="content1">
+                <img src="{{ url_for('static', filename='src/random4.jpeg') }}">
+            </div>
+            <div class="imgBx" style="--i:2;" data-id="content2">
+                <img src="{{ url_for('static', filename='src/random6.jpeg') }}">
+            </div>
+            <div class="imgBx" style="--i:3;" data-id="content3">
+                <img src="{{ url_for('static', filename='src/random5.jpeg') }}">
+            </div>
+            <div class="imgBx" style="--i:4;" data-id="content4">
+                <img src="{{ url_for('static', filename='src/random1.jpeg') }}">
+            </div>
+            <div class="imgBx" style="--i:5;" data-id="content5">
+                <img src="{{ url_for('static', filename='src/random2.jpeg') }}">
+            </div>
+            <div class="imgBx" style="--i:6;" data-id="content6">
+                <img src="{{ url_for('static', filename='src/random3.jpeg') }}">
+            </div>
+        </div>
 
-    <h2>Members:</h2>
+        <div class="content">
+            <div class="contentBx active" id="content1">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="{{ url_for('static', filename='src/random4.jpeg') }}">
+                    </div>
+                    <div class="textBx">
+                        <h2>Abdul<br><span>Co-founder</span></h2>
+                        <ul class="sci">
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-    <!--Member 1-->
-    <h3 class="member-name">Abdul</h3>
-    <div class="two-column">
-        <img src="random1.jpg" alt="Abdul" class="member-image">
-        <div class="column member-info">
-            
-            <p>About Abdul</p>
-        </div>
-    </div>
-    <!--Member 2-->
-    <h3>Dhruv</h3>
-    <div class="two-column">
-        <img src="random2.jpg" alt="Dhruv" class="member-image">
-        <div class="column member-info">
-            
-            <p>About Dhruv</p>
-        </div>
-    </div>
-    <h3>Krupall</h3>
-    <div class="two-column">
-        <img src="random3.jpg" alt="Krupall" class="member-image">
-        <div class="column member-info">
-            
-            <p>About Krupall</p>
-        </div>
-    </div>
-    <h3>Malhar</h3>
-    <div class="two-column">
-        <img src="random4.jpg" alt="Malhar" class="member-image">
-        <div class="column member-info">
-            
-            <p>About Malhar</p>
-        </div>
-    </div>
-    <h3>Mike</h3>
-    <div class="two-column">
-        <img src="random5.jpg" alt="Mike" class="member-image">
-        <div class="column member-info">
-            
-            <p>About Mike</p>
+            <div class="contentBx" id="content2">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="{{ url_for('static', filename='src/random6.jpeg') }}">
+                    </div>
+                    <div class="textBx">
+                        <h2>Dhruv<br><span>Co-founder</span></h2>
+                        <ul class="sci">
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentBx" id="content3">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="{{ url_for('static', filename='src/random5.jpeg') }}">
+                    </div>
+                    <div class="textBx">
+                        <h2>Krupal<br><span>Co-founder</span></h2>
+                        <ul class="sci">
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentBx" id="content4">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="{{ url_for('static', filename='src/random1.jpeg') }}">
+                    </div>
+                    <div class="textBx">
+                        <h2>Malhar<br><span>Co-founder</span></h2>
+                        <ul class="sci">
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentBx" id="content5">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="{{ url_for('static', filename='src/random2.jpeg') }}">
+                    </div>
+                    <div class="textBx">
+                        <h2>Mike<br><span>Co-founder</span></h2>
+                        <ul class="sci">
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentBx" id="content6">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="{{ url_for('static', filename='src/random3.jpeg') }}">
+                    </div>
+                    <div class="textBx">
+                        <h2>Vaish<br><span>Co-founder</span></h2>
+                        <ul class="sci">
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
-    <h3>Vaish</h3>
-    <div class="two-column">
-        <img src="random6.jpg" alt="Vaish" class="member-image">
-        <div class="column member-info">
-            
-            <p>About Vaish</p>
-        </div>
-    </div>
 
+    <script>
+        let imgBx = document.querySelectorAll('.imgBx')
+        let contentBx = document.querySelectorAll('.contentBx')
+
+        console.log(imgBx.length, contentBx.length);
+        for(let i=0; i < imgBx.length; i++){
+            imgBx[i].addEventListener('mouseover', function(){
+                for(let i=0; i < contentBx.length; i++){
+                    contentBx[i].className = 'contentBx';
+                }
+                document.getElementById(this.dataset.id).className = 'contentBx active';
+
+
+                for(let i=0; i < imgBx.length; i++){
+                    imgBx[i].className = 'imgBx';
+                }
+                this.className = 'imgBx active';
+            })
+        }
+    </script>
 </body>
 </html>

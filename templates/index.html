@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}">
 </head>
 <body class="bg-color">
     <header>
-        <a href="#" class="logo">Hackers</a>
-        <ul>
-            <li><a href="#" class = "active" > Home </a></li>
-            <li><a href="#sec">About Us</a></li>
-        </ul>
+        <a href="#"><img src="{{ url_for('static', filename='src/logo.png')}}" class="logo"></a>
+        <div class="nav-options">
+            <a href="#" class = "active" > Home </a>
+            <a href="about.html">About Us</a>
+        </div>
     </header>
     <section class="main_page">
         <img src="{{ url_for('static', filename='src/stars.png') }}" id="main_page_stars">
@@ -28,19 +28,9 @@
 
     <div class="sec" id = "sec">
         <h2 class="heading">About us</h2>
-        <p> In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows.
-
-            The scheduling activity is carried out by a process called scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.
-            
-            Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single central processing unit (CPU).In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows.
-
-            The scheduling activity is carried out by a process called scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.
-            
-            Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single central processing unit (CPU).In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows.
-
-            The scheduling activity is carried out by a process called scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.
-            
-            Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single central processing unit (CPU).</p>
+        <p>
+            This scheduler website is a digital platform designed to help users manage their time, appointments, and tasks more efficiently. It typically offers a user-friendly interface where individuals or organizations can create, view, and organize their schedules. Users can input events, meetings, and deadlines, and the scheduler website will assist in visualizing and organizing their  weekly
+        </p>
     </div>
     <script>
         let stars = document.getElementById('main_page_stars');

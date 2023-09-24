@@ -1,18 +1,9 @@
 const filepath = 'text.txt'
 
 var dict = {"userName": "Guest", "hasIcs": "no", "primaryTasks": {}, "secondaryTasks": {}};
-function dataTransferDict() {
-    $.ajax({
-        url: "/process",
-        type: "POST",
-        data: JSON.stringify(dict),
-        success: function (response) {
-            document.getElementById("output").innerHTML = response.result;
-        }
-    });
-}
+
 var checkFile = document.querySelectorAll('input[name="check"]');
-const submit_btn = document.querySelector('#p-next');
+const secondary_btn = document.querySelector('#p-next');
 
 const hide = function(event){
     event.style.display = "none";
@@ -57,104 +48,99 @@ checkFile.forEach(function(radio) {
     });
 });
 
-document.getElementById("schedule_submit").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-    hide(document.getElementById('schedule'))   
-    show(document.getElementById('primaryTask'))
+const primary_task_form = document.getElementById("p-task-form");
+
+const input_text = document.querySelector("#p-task-input");
+const input_day = document.querySelector("#p-day")
+const input_start_time = document.querySelector("#p-start-time")
+const input_end_time = document.querySelector("#p-end-time")
+const input_task_desc = document.querySelector("#p-task-desc");
+
+const list_el = document.querySelector("#p-tasks");
+
+primary_task_form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!input_text.value){
+        alert("Please fill out the text");
+        return;
+    } else if (input_day.value == "choose_day") {
+        alert("Please input the day");
+        return;
+    } else if (input_start_time.value == "choose_start_time"){
+        alert("Please input the start time field");
+        return;
+    } else if (input_end_time.value == "choose_end_time"){
+        alert("Please input the end time field");
+        return;
+    } else if (input_start_time.value >= input_end_time.value ){
+        alert("Please enter a different start and end time");
+        return;
+    }else if (!input_task_desc.value){
+        alert("Please input the task description field or input N/A");
+        return;
+    } else if (input_text.value in dict['primaryTasks']){
+        alert("Please enter another event")
+        return;
+    } else {
+        console.log("Success");
+    }
+
+    const task_el = document.createElement("div");
+    task_el.classList.add("task");
+
+    const task_content_el = document.createElement("div");
+    task_content_el.classList.add("content"); 
+
+    const task_card = document.createElement("div");
+    task_card.classList.add("task-card");
     
-    const primary_task_form = document.getElementById("p-task-form");
+    task_el.appendChild(task_content_el);
+    task_content_el.appendChild(task_card);
 
-    const input_text = document.querySelector("#p-task-input");
-    const input_day = document.querySelector("#p-day")
-    const input_start_time = document.querySelector("#p-start-time")
-    const input_end_time = document.querySelector("#p-end-time")
-    const input_task_desc = document.querySelector("#p-task-desc");
+    var s_time = document.querySelector(`option[value="${input_start_time.value}"]`).textContent;
+    var e_time = document.querySelector(`option[value="${input_end_time.value}"]`).textContent;
 
-    const list_el = document.querySelector("#p-tasks");
+    task_card.innerHTML = `
+    <input type="text" class="task-card-1 text" value="${input_text.value}" readonly>
+    <input type="text" class="task-card-1 day" value="${input_day.value}" readonly>
+    <input type="text" class="task-card-1 time" value="${s_time} - ${e_time}" readonly>
+    <input type="text" class="task-card-1 desc" value="${input_task_desc.value}" readonly>`;
 
-    primary_task_form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    const task_actions_el = document.createElement("div");
+    task_actions_el.classList.add("actions");
 
-        if (!input_text.value){
-            alert("Please fill out the text");
-            return;
-        } else if (input_day.value == "choose_day") {
-            alert("Please input the day");
-            return;
-        } else if (input_start_time.value == "choose_start_time"){
-            alert("Please input the start time field");
-            return;
-        } else if (input_end_time.value == "choose_end_time"){
-            alert("Please input the end time field");
-            return;
-        } else if (input_start_time.value >= input_end_time.value ){
-            alert("Please enter a different start and end time");
-            return;
-        }else if (!input_task_desc.value){
-            alert("Please input the task description field or input N/A");
-            return;
-        } else if (input_text.value in dict['primaryTasks']){
-            alert("Please enter another event")
-            return;
-        } else {
-            console.log("Success");
+    const task_delete_el = document.createElement("button");
+    task_delete_el.classList.add('btn');
+    task_delete_el.innerHTML = "Delete";
+
+    task_actions_el.appendChild(task_delete_el);
+    task_el.appendChild(task_actions_el);
+    
+    list_el.appendChild(task_el);
+    dict['primaryTasks'][input_text.value] = 
+        {"day": input_day.value, 
+            "start_time": input_start_time.value,
+            "end_time": input_end_time.value,
+            "task_desc": input_task_desc.value
         }
 
-        const task_el = document.createElement("div");
-        task_el.classList.add("task");
+    primary_task_form.reset();
 
-        const task_content_el = document.createElement("div");
-        task_content_el.classList.add("content"); 
+    task_delete_el.addEventListener('click', () => {
+        const htmlString = task_el.innerHTML;
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = htmlString;
+        const textElement = tempElement.querySelector('.task-card-1.text');
+        const extractedText = textElement ? textElement.value : null;
 
-        const task_card = document.createElement("div");
-        task_card.classList.add("task-card");
-        
-        task_el.appendChild(task_content_el);
-        task_content_el.appendChild(task_card);
-
-        var s_time = document.querySelector(`option[value="${input_start_time.value}"]`).textContent;
-        var e_time = document.querySelector(`option[value="${input_end_time.value}"]`).textContent;
-
-        task_card.innerHTML = `
-        <input type="text" class="task-card-1 text" value="${input_text.value}" readonly>
-        <input type="text" class="task-card-1 day" value="${input_day.value}" readonly>
-        <input type="text" class="task-card-1 time" value="${s_time} - ${e_time}" readonly>
-        <input type="text" class="task-card-1 desc" value="${input_task_desc.value}" readonly>`;
-
-        const task_actions_el = document.createElement("div");
-        task_actions_el.classList.add("actions");
-
-        const task_delete_el = document.createElement("button");
-        task_delete_el.classList.add('btn');
-        task_delete_el.innerHTML = "Delete"
-
-        task_actions_el.appendChild(task_delete_el);
-        task_el.appendChild(task_actions_el);
-        
-        list_el.appendChild(task_el);
-        dict['primaryTasks'][input_text.value] = 
-            {"day": input_day.value, 
-             "start_time": input_start_time.value,
-             "end_time": input_end_time.value,
-             "task_desc": input_task_desc.value
-            }
-
-        primary_task_form.reset();
-
-        task_delete_el.addEventListener('click', () => {
-            const htmlString = task_el.innerHTML;
-            const tempElement = document.createElement('div');
-            tempElement.innerHTML = htmlString;
-            const textElement = tempElement.querySelector('.task-card-1.text');
-            const extractedText = textElement ? textElement.value : null;
-
-            delete dict['primaryTasks'][extractedText];
-            list_el.removeChild(task_el);
-        });
+        delete dict['primaryTasks'][extractedText];
+        list_el.removeChild(task_el);
     });
-});  
+});
 
-submit_btn.addEventListener("submit", function(event){
+
+secondary_btn.addEventListener("submit", function(event){
     event.preventDefault();
     console.log(dict);
     hide(document.getElementById('primaryTask'));   
@@ -243,18 +229,14 @@ submit_btn.addEventListener("submit", function(event){
 
             delete dict['secondaryTasks'][extractedText];
             list_el.removeChild(task_el);
+            var data = JSON.stringify(dict);
+            console.log(data);
+            document.getElementById('test').value = data;
         });
+
+        var data = JSON.stringify(dict);
+        document.getElementById('test').value = data; 
+        console.log(document.getElementById('test').value) 
     });
 })
-
-function generateSchedule() {
-    var data = JSON.stringify(dict);
-    console.log(data);
-    document.getElementById('test').value = data;
-
-}
-
-   
-// Add a click event listener to the download button
-document.querySelector("#s-next").addEventListener("submit", generateSchedule);
 

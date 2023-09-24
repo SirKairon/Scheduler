@@ -5,18 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style1.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/result.css')}}">
 </head>
 
 <body class="text-center text-bg-dark justify-content-center">
+    <div id="nameForm"></div>
+    <div id="p-task-form"></div>
+    <div id="p-next"></div>
+
+
     <div class="navigation">
         <a href="index.html">Home</a>
         <a href="#about">About</a>
     </div>
     <div class="container" id="h1">
         <h1>Result</h1>
-        <h2>{{flaskName}}</h2>
     </div>
+    <!-- <div class="container" id="h1" value=>
+        <h1>{{flaskName}}</h1>
+    </div> -->
     <div class="table" id="table">
         <table class="table" border="5" cellapcing="0" align="center" id="tableID">
             <thead>
@@ -69,7 +76,7 @@
 
     </div>
     <div class="container" id="button">
-        <a href="" class="button3">Regenrate</a>
+        <a href="" class="button3">Regenerate</a>
 
     </div>
 
@@ -121,7 +128,8 @@
             col.addEventListener('drop', handleDrop, false);
         });
     </script>
-    <script src="script.js"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    
 </body>
 
 </html>

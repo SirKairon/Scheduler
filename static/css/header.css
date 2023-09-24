@@ -1,0 +1,38 @@
+header
+{
+    position: absolute;
+    width: 100%;
+    padding: 2.5rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    z-index: 1000;
+}
+
+header .logo
+{
+    width: 8rem;
+    height: 10rem;
+}
+
+.nav-options{
+  position: relative;
+  margin: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.nav-options a{
+    text-decoration: none;
+    color: #fff;
+    padding: 1rem;
+    margin: 1.2rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.nav-options a:hover,
+.nav-options a.active
+{
+    background: #fff;
+    color: #2b1055;
+}
