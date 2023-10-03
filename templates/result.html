@@ -21,9 +21,9 @@
     <div class="container" id="h1">
         <h1>Result</h1>
     </div>
-    <!-- <div class="container" id="h1" value=>
-        <h1>{{flaskName}}</h1>
-    </div> -->
+    <div class="container" id="h1" value=>
+        <h5>Dear {{flaskName}}, below is your generated timetable.</h5>
+    </div>
     <div class="table" id="table">
         <table class="table" border="5" cellapcing="0" align="center" id="tableID">
             <thead>
@@ -31,6 +31,9 @@
                     <!-- add 8 columns: 7 for days Monday to Sunday and 1 for title Day -->
                     <td align="center" height="50" width="100"><br>
                         <b>This Week's Schedule</b></br>
+                    </td>
+                    <td align="center" height="50" width="100"><br>
+                        <b>Sunday</b></br>
                     </td>
                     <td align="center" height="50" width="100"><br>
                         <b>Monday</b></br>
@@ -50,9 +53,7 @@
                     <td align="center" height="50" width="100"><br>
                         <b>Saturday</b></br>
                     </td>
-                    <td align="center" height="50" width="100"><br>
-                        <b>Sunday</b></br>
-                    </td>
+
 
                 </tr>
             </thead>
