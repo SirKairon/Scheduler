@@ -1,6 +1,17 @@
 const filepath = 'text.txt'
 
-var dict = {"userName": "Guest", "hasIcs": "no", "primaryTasks": {}, "secondaryTasks": {}};
+if (window.location.pathname === '/' || window.location.pathname === '/index.html'){
+    var dict = {"userName": "Guest", "hasIcs": "no", "primaryTasks": {}, "secondaryTasks": {}};
+    document.cookie = "task=" + JSON.stringify(dict) + "; path=/";
+}
+
+var dict = getObjectfromCookie('task');
+if (dict) {
+    console.log('Object retrieved from cookie:', dict);
+} else {
+    console.log('Cookie not found or object could not be parsed.');
+}
+
 
 var checkFile = document.querySelectorAll('input[name="check"]');
 const secondary_btn = document.querySelector('#p-next');
@@ -11,6 +22,18 @@ const hide = function(event){
 
 const show = function(event){
     event.style.display = "block";
+}
+
+function getObjectfromCookie(cookieName){
+    const cookieString = document.cookie;
+    const cookies = cookieString.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === cookieName) {
+            return JSON.parse(decodeURIComponent(value));
+        }
+    }
+    return null; // Return null if the cookie with the specified name is not found
 }
 
 document.getElementById("nameForm").addEventListener("submit", function(event) {
@@ -37,14 +60,20 @@ const schedule = function(){
 }
 
 checkFile.forEach(function(radio) {
+    document.cookie = "task=" + JSON.stringify(dict) + "; path=/";
     radio.addEventListener('change', function() {
         var selectedFile = document.querySelector('input[name="check"]:checked');
         console.log(selectedFile)
         if (selectedFile.value == "no") {
             document.getElementById("container").style.display = "none";
+            dict["hasIcs"] = "no";
+            console.log(dict);
         } else {
             document.getElementById("container").style.display = "flex";
+            dict["hasIcs"] = "yes";
+            console.log(dict);
         }
+        document.cookie = "task=" + JSON.stringify(dict) + "; path=/";
     });
 });
 
@@ -229,14 +258,10 @@ secondary_btn.addEventListener("submit", function(event){
 
             delete dict['secondaryTasks'][extractedText];
             list_el.removeChild(task_el);
-            var data = JSON.stringify(dict);
-            console.log(data);
-            document.getElementById('test').value = data;
+            document.cookie = "task=" + JSON.stringify(dict) + "; path=/";
         });
 
-        var data = JSON.stringify(dict);
-        document.getElementById('test').value = data; 
-        console.log(document.getElementById('test').value) 
+        document.cookie = "task=" + JSON.stringify(dict) + "; path=/";
     });
 })
 
