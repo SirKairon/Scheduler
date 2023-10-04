@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/about.css')}}">
 
@@ -14,7 +15,7 @@
     <header>
         <a href="#"><img src="{{ url_for('static', filename='src/logo.png')}}" class="logo"></a>
         <div class="nav-options">
-            <a href="/" class = "active" > Home </a>
+            <a href="/" class="active"> Home </a>
             <a href="about.html">About Us</a>
         </div>
     </header>
@@ -117,10 +118,9 @@
                     <div class="textBx">
                         <h2>Mike<br><span>Co-founder</span></h2>
                         <ul class="sci">
-                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                            <li><a href="https://www.instagram.com/dhruvkaironn/"><i
+                                        class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="https://github.com/SirKairon"><i class="fa-brands fa-github"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,15 +153,15 @@
         let contentBx = document.querySelectorAll('.contentBx')
 
         console.log(imgBx.length, contentBx.length);
-        for(let i=0; i < imgBx.length; i++){
-            imgBx[i].addEventListener('mouseover', function(){
-                for(let i=0; i < contentBx.length; i++){
+        for (let i = 0; i < imgBx.length; i++) {
+            imgBx[i].addEventListener('mouseover', function () {
+                for (let i = 0; i < contentBx.length; i++) {
                     contentBx[i].className = 'contentBx';
                 }
                 document.getElementById(this.dataset.id).className = 'contentBx active';
 
 
-                for(let i=0; i < imgBx.length; i++){
+                for (let i = 0; i < imgBx.length; i++) {
                     imgBx[i].className = 'imgBx';
                 }
                 this.className = 'imgBx active';
@@ -169,4 +169,5 @@
         }
     </script>
 </body>
+
 </html>
