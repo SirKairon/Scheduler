@@ -15,7 +15,7 @@ Scheduler is a web application made using Flask. It is a dynamic and responsive 
 
 ## Getting Started
 
-Stay Tuned for the website link
+Follow this link: https://scheduler-0r4v-main-qnxr6lu2aq-wm.a.run.app/
 
 ## Authors
 
